@@ -29,7 +29,7 @@ public class MemberDAO2 {
 		System.out.println(dbpw);
 		//properties에서 db정보 가져옵니다.(내부적으로 input..
 		Class.forName("oracle.jdbc.OracleDriver");		
-		Connection conn = DriverManager.getConnection("url","dbid","dbpw");
+		Connection conn = DriverManager.getConnection("this.url","this.dbid","this.dbpw");// this를 안써도 될거임 
 		String sql= "SELECT * FROM ORACLE_MEMBER WHERE ora_id=?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setString(1, id);
