@@ -1,5 +1,5 @@
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class MemberDAO {
+public class MemberDAO2 {
 	private String url;
 	private String dbid;
 	private String dbpw;
@@ -29,7 +29,7 @@ public class MemberDAO {
 		System.out.println(dbpw);
 		//properties에서 db정보 가져옵니다.(내부적으로 input..
 		Class.forName("oracle.jdbc.OracleDriver");		
-		Connection conn = DriverManager.getConnection("this.url","this.dbid","this.dbpw");
+		Connection conn = DriverManager.getConnection("url","dbid","dbpw");
 		String sql= "SELECT * FROM ORACLE_MEMBER WHERE ora_id=?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setString(1, id);
@@ -49,10 +49,11 @@ public class MemberDAO {
 		
 	}
 	
-	public static void main() throws ClassNotFoundException, SQLException, IOException{
-		MemberDAO mdao = new MemberDAO();
+	
+	public static void main(String[]args) throws ClassNotFoundException, SQLException, IOException{
+		MemberDAO2 mdao = new MemberDAO2();
 		Member m = mdao.selectMemberById("1");
-		/*System.out.println(m.getId().equals(arg0));*/
+		System.out.println(m.getId().equals("1"));
 	}
 	
 }
